@@ -2,7 +2,7 @@ start.sh
 *pyc
 movieenv/
 settings.json
-
+trial.py
 
 ### Flask ###
 instance/*

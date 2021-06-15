@@ -11,6 +11,9 @@ class Config:
   MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
   MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
   UPLOADED_PHOTOS_DEST = 'app/static/photos'
+  BASE_URL = 'https://api.themoviedb.org/3/movie/{}?api_key={}'
+  VID_URL = 'https://api.themoviedb.org/3/movie/{}/videos?api_key={}'
+  MOVIE_API = 'a72cf63dfc93d3aa208d591b54dd2c81'
 
 class ProdConfig(Config):
   pass
