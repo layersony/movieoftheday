@@ -1,6 +1,6 @@
 start.sh
 *pyc
-movievenv/
+movieenv/
 settings.json
 
 
