@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, redirect, url_for
 from . import main
 from ..request import get_movies, get_video, get_movie
 
@@ -19,3 +19,4 @@ def movie(id):
   title = f'{movie.title}'
 
   return render_template('movie.html', title = title, movie = movie, yt_vid=yt_vid)
+

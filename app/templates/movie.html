@@ -5,7 +5,6 @@
 {% block styles %}
     {{ super() }}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-
 {% endblock %}
 
 <!-- Content block -->
@@ -15,15 +14,21 @@
   <!-- Poster background -->
   <div class="row">
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 posterPath">
-      <img src="{{movie.poster}}" alt="{{movie.title}}" class="img-fluid">
+      <img src="{{movie.poster}}" alt="{{movie.title}}" class="img-fluid imageposter">
     </div>
 
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 movie-details">
       <h3>{{ movie.title }}</h3>
       <p class="overview"> {{ movie.overview }}</p>
       <p class="ratings"> <b> {{ movie.vote_average }}</b> - <i>{{ movie.vote_count}} votes </i> </p>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{yt_vid.key}}" title="{{yt_vid.name}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <a class="ratings" href="/movie/review/new/{{movie.id}}"> Write a new review</a>
+      <div id="overlay">
+        <div id="text">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/{{yt_vid.key}}" title="{{yt_vid.name}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="trailerplay">
+        <span class="playtext"><i class="fad fa-play playbutton" id="play"></i> Play Trailer</span>
+      </div>
 
     </div>
   </div>
