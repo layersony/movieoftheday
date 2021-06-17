@@ -1,1 +1,31 @@
-<h1>{{ heading }}</h1>
+{% extends "base.html" %}
+
+
+{% block content %}
+<!-- Content block -->
+<div class="container">
+    <div class="col-md-4" d-flex>
+        <h4>Choose Genre</h4>
+        <div class=" list-group list-group-flush scrolly">
+            <ul>
+            {% for genre in genres %}
+            
+            <form action="">
+                <a class="text-capitalize text-info" href="">
+                    {{genre.name}}  {{genre.id}} 
+                </a>
+               
+            </form>
+            
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!-- <div class="col-md-8">
+        <h1 class="text-center text-warning"> {{id}} </h3>
+           
+    </div> -->
+</div>
+
+
+{% endblock content%}
