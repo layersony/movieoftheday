@@ -1,14 +1,30 @@
 {% macro displayMovieList(movie_list) %}
+<div class="row">
 
-    {% for movie in movie_list %}
-        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 movie-card">
-            <img src="{{ movie.poster }}" alt="{{ movie.title }} poster" class="img-responsive">
-            <li class="text-center">
-                <a href="/movie/{{movie.id}}">{{ movie.title|truncate(20)}}</a>
-            </li>
-        </div>
+  {% for movie in movie_list %}
+  <div class="col-lg-6 movie-card">
+    <div class="d-flex movie-item justify-content-center align-items-center">
+      <div class="col-md-6">
+        <img src="{{ movie.poster }}" alt="{{ movie.title }} poster" class="img-responsive">
+      </div>
 
-    {% endfor %}
+      <div class='col-md-6 moretext'>
+        <li class="text-center">
+          <h1>{{ movie.title}}</h1>
+          <hr>
+          <p>{{ movie.overview| truncate(80) }}</p>
+
+
+          <div class="card-footer">
+            <a href="/movie/{{movie.id}}">Check It Out</a>
+          </div>
+        </li>
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+</div>
 
 {% endmacro %}
 

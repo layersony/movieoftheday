@@ -1,0 +1,172 @@
+body{
+  background: linear-gradient(150deg, #000000cc, #1d215e 100%);
+  color: #fff;
+  background-attachment: fixed;
+}
+.listtags a{
+  text-decoration: none;
+  font-size: 20px;
+  border-bottom: 2px solid white;
+  color: white;
+  border-radius: 20px;
+  padding: 10px;
+  margin: auto 10px;
+}
+
+.listtags a:hover{
+  background-color: white;
+  border-bottom: 5px solid black;
+  color: black;
+}
+
+.navcustom{
+  background-image: linear-gradient(to right, #000000 , #000000);
+  min-height: 90px;
+}
+.navcustom ul{
+  width: 100%;
+
+}
+.navcustom>.container-fluid ul li{
+  margin: 0px;
+}
+.navcustom ul li>.title{
+  font-size: 30px;
+  text-decoration: none;
+  color: black;
+}
+.navcustom ul li>.other{
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+  border-radius: 40px;
+  min-width: 120px;
+  /* height: 50px; */
+  text-align: center;
+}
+
+.navcustom ul li>.other:hover{
+  color: black;
+  border-radius: 40px;
+  min-width: 120px;
+  /* height: 50px; */
+  text-align: center;
+  background-color: white;
+}
+
+.nav-item img{
+  width: 60px;
+  filter:invert();
+}
+.ullisting{
+  border-bottom: 2px solid white;
+  border-radius: 30px;
+}
+.movieday{
+  font-size: 20px;
+}
+
+.movie-card{
+  min-height: 400px;
+  font-size: 15px;
+}
+.movie-card img{
+  border-radius: 10px;
+}
+
+.movie-item{
+  background-color: rgb(0, 0, 0);
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  min-height: 375px;
+}
+
+.posterPath{
+  text-align: center;
+}
+
+.ratings{
+  font-size: 20px;
+}
+
+.ratings i{
+  color: green;
+}
+
+ul li{
+  list-style-type: none;
+  font-size: 20px;
+}
+
+ul li a{
+  color: white;
+}
+
+ul li a:hover{
+  color: rgb(255, 255, 255);
+}
+.moretext{
+  text-align: center;
+}
+
+.card-footer a {
+  text-decoration: none;
+  padding: 7px;
+  border-radius: 20px;
+  font-size: 15px;
+  border-bottom: 2px solid white;
+  color: white;
+}
+.card-footer a:hover {
+  background-color: white;
+  color: black;
+}
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.734);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+.overview{
+  font-size: 20px;
+}
+.movie-details h3{
+  font-size:30px;
+}
+.imageposter{
+  border-radius: 20px;
+  box-shadow: 10px 15px 7px white;
+  max-height: 500px;
+}
+.playbutton{
+  font-size: 25px
+}
+.playbutton:hover{
+  font-size: 30px;
+  transition: ease-in-out 0.4s;
+  color: red;
+}
+.playtext{
+  font-size: 20px;
+}
+.playtext:hover{
+  font-size: 25px;
+}

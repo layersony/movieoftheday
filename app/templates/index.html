@@ -3,10 +3,7 @@
 
 <!-- Styles block -->
 
-{% block styles%}
-    {{ super() }}
-    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
-{% endblock %}
+
 
 {% block content %}
 <!-- Content block -->
@@ -24,34 +21,51 @@
             </ul>
         </div>
     </div>
+</div>
 
+<div class="d-md-inline-block listtags">
+  <a href="#popular">Popular Movies</a>
+  <a href="#upcoming">Up Coming</a>
+  <a href="#nowshowing">Now Showing</a>
+</div>
+<hr>
+<div class='container'>
+  <div class="row justify-content-center text-center">
     <div>
-        <form>
-            <input type="text" name="movie_query"  class="form_control" placeholder='Search for a Movie'>
-            <input type="submit" value="Submit" class="btn btn-default">
-        </form>
+      <!-- <form>
+        <input type="text" name="movie_query" class="form_control" placeholder='Search for a Movie'>
+        <input type="submit" value="Submit" class="btn btn-default">
+      </form>
+    </div> -->
+  
+    <div>
+      <h1>Recommended For You</h1>
+      <ul>
+        {{ macro.displayMovieList(recommended)}}
+      </ul>
     </div>
-
-  <!--Popular movie-->
-  <div>
-    <h3> Popular Movies</h3>
-    <ul>
+  
+    <div>
+      <h1 id="popular"> Popular Movies</h1>
+      <ul>
         {{ macro.displayMovieList(popular)}}
-    </ul>
-  </div>
-
-  <div>
-    <h3> Upcoming Movies </h3>
-    <ul>
+      </ul>
+    </div>
+  
+    <div>
+      <h1 id="upcoming"> Upcoming Movies </h1>
+      <ul>
         {{ macro.displayMovieList(upcoming)}}
-    </ul>
-  </div>
-
-  <div>
-    <h3>Now Showing</h3>
-    <ul>
+      </ul>
+    </div>
+  
+    <div>
+      <h1 id="nowshowing">Now Showing</h1>
+      <ul>
         {{ macro.displayMovieList(now_showing)}}
-    </ul> 
+      </ul>
+    </div>
   </div>
+</div>
 
 {% endblock %}
