@@ -21,6 +21,94 @@ class Video:
     self.type = type
 
 
+
+class Horror:
+    '''
+    Movie class to define Movie Objects
+    '''
+
+    def __init__(self,id,title,overview,poster,vote_average,vote_count):
+        self.id =id
+        self.title = title
+        self.overview = overview
+        self.poster = 'https://image.tmdb.org/t/p/w500/'+ poster
+        self.vote_average = vote_average
+        self.vote_count = vote_count
+
+# Annimations
+class Annimations:
+    '''
+    Movie class to define Movie Objects
+    '''
+
+    def __init__(self,id,title,overview,poster,vote_average,vote_count):
+        self.id =id
+        self.title = title
+        self.overview = overview
+        self.poster = 'https://image.tmdb.org/t/p/w500/'+ poster
+        self.vote_average = vote_average
+        self.vote_count = vote_count
+
+
+# Action
+class Action:
+    '''
+    Movie class to define Movie Objects
+    '''
+
+    def __init__(self,id,title,overview,poster,vote_average,vote_count):
+        self.id =id
+        self.title = title
+        self.overview = overview
+        self.poster = 'https://image.tmdb.org/t/p/w500/'+ poster
+        self.vote_average = vote_average
+        self.vote_count = vote_count
+
+# Action
+class Comedy:
+    '''
+    Movie class to define Movie Objects
+    '''
+
+    def __init__(self,id,title,overview,poster,vote_average,vote_count):
+        self.id =id
+        self.title = title
+        self.overview = overview
+        self.poster = 'https://image.tmdb.org/t/p/w500/'+ poster
+        self.vote_average = vote_average
+        self.vote_count = vote_count
+
+# Romance
+class Romance:
+    '''
+    Movie class to define Movie Objects
+    '''
+
+    def __init__(self,id,title,overview,poster,vote_average,vote_count):
+        self.id =id
+        self.title = title
+        self.overview = overview
+        self.poster = 'https://image.tmdb.org/t/p/w500/'+ poster
+        self.vote_average = vote_average
+        self.vote_count = vote_count
+
+class SciFi:
+    '''
+    Movie class to define Movie Objects
+    '''
+
+    def __init__(self,id,title,overview,poster,vote_average,vote_count):
+        self.id =id
+        self.title = title
+        self.overview = overview
+        self.poster = "https://image.tmdb.org/t/p/w500/" + poster
+        self.vote_average = vote_average
+        self.vote_count = vote_count
+# anime
+
+
+
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)

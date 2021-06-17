@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<!-- Content block -->
+<div class="container">
+        <h4>Romance</h4>
+        <div class="list-group list-group-flush scrolly">
+            <ul>
+                {% for source in sources %}
+                <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 source-card">
+                    <img src="{{ source.poster }}" alt="{{ source.title }} poster" class="img-responsive">
+                    <li class="text-center">
+                        <a href="/source/{{source.id}}">
+                            {{ source.title|truncate(10)}}</a>
+                    </li>
+                </div>
+            {% endfor %}
+            </ul>
+        </div>
+</div>
+{% endblock content%}
