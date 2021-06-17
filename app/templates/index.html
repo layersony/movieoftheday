@@ -7,28 +7,19 @@
 
 {% block content %}
 <!-- Content block -->
-<div class="container">
-    <div class="col-md-4" d-flex>
-        <h4>Choose Genre</h4>
-        <div class=" list-group list-group-flush scrolly">
-            <ul>
-            {% for genre in genres %}
-                <a class="text-capitalize text-info" href="">
-                    {{genre.name}}  {{genre.id}} 
-                </a>
-    
-            {% endfor %}
-            </ul>
-        </div>
-    </div>
-</div>
-
 <div class="d-md-inline-block listtags">
   <a href="#popular">Popular Movies</a>
   <a href="#upcoming">Up Coming</a>
   <a href="#nowshowing">Now Showing</a>
+  <a href="/action">Action</a>
+  <a href="/anime">Animation</a>
+  <a href="/comedy">Comedy</a>
+  <a href="/horror">Horror</a>
+  <a href="/romance">Romance</a>
+  <a href="/sci-fi">Sci-Fi</a>
 </div>
 <hr>
+
 <div class='container'>
   <div class="row justify-content-center text-center">
     <div>

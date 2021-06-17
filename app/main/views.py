@@ -22,7 +22,7 @@ def movie(id):
   title = f'{movie.title}'
 
   return render_template('movie.html', title = title, movie = movie, yt_vid=yt_vid)
-# Action
+
 @main.route('/action')
 def action():
 
@@ -34,7 +34,6 @@ def action():
     print(sources)
     return render_template('action.html',title=title, sources=sources)
 
-# subscribers
 @main.route('/subscribe',methods = ['POST','GET'])
 def subscribe():
     email = request.form.get('subscriber')
@@ -43,7 +42,7 @@ def subscribe():
     mail_message("Subscribed to Popular movies","email/welcome_subscriber",new_subscriber.email,new_subscriber=new_subscriber)
     flash('Sucessfuly subscribed')
     return redirect(url_for('main.index'))
-# Animation
+
 @main.route('/anime')
 def anime():
 
@@ -55,7 +54,6 @@ def anime():
     print(sources)
     return render_template('anime.html',title=title, sources=sources)
 
-# comedy
 @main.route('/comedy')
 def comedy():
 
@@ -67,8 +65,6 @@ def comedy():
     print(sources)
     return render_template('comedy.html',title=title, sources=sources)
 
-
-# Horror
 @main.route('/horror')
 def horror():
 
@@ -80,8 +76,6 @@ def horror():
     print(sources)
     return render_template('horror.html',title=title, sources=sources)
 
-
-# Romance
 @main.route('/romance')
 def romance():
 
@@ -93,7 +87,6 @@ def romance():
     print(sources)
     return render_template('romance.html',title=title, sources=sources)
 
-#Sci-Fi
 @main.route('/sci-fi')
 def fiction():
 
@@ -104,4 +97,3 @@ def fiction():
     sources = get_scifi()
     print(sources)
     return render_template('sci-fi.html',title=title, sources=sources)
-

@@ -1,5 +1,5 @@
 import urllib.request, json
-from .models import Horror,Annimations,Action,Comedy,Romance, SciFi, Genres,Movie, Movies, Video, Genres
+from .models import Horror,Annimations,Action,Comedy,Romance, SciFi, Genres,Movie, Video, Genres
 
 
 api_key = None
@@ -79,7 +79,7 @@ def process_result(movieList):
     vote_count = movie_item.get('vote_count')
 
     if poster:
-      movie_object = Movies(id, title, overview, poster, vote_average, vote_count)
+      movie_object = Movie(id, title, overview, poster, vote_average, vote_count)
       processedList.append(movie_object)
 
   return processedList
@@ -113,7 +113,6 @@ def get_horror():
             movie_results = process_results(movie_results_list)
 
     return movie_results
-
 
 def process_results(movie_list):
    

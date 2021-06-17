@@ -5,22 +5,11 @@ from flask_login import current_user,UserMixin
 from werkzeug.security import generate_password_hash,check_password_hash
 from datetime import datetime
 
-class Movies:
-  def __init__(self,id,title,overview,poster,vote_average,vote_count):
-    self.id =id
-    self.title = title
-    self.overview = overview
-    self.poster = 'https://image.tmdb.org/t/p/w500'+ poster
-    self.vote_average = vote_average
-    self.vote_count = vote_count
-
 class Video:
   def __init__(self, key, name, type):
     self.key = key
     self.name = name
     self.type = type
-
-
 
 class Horror:
     '''
@@ -48,7 +37,6 @@ class Annimations:
         self.poster = 'https://image.tmdb.org/t/p/w500/'+ poster
         self.vote_average = vote_average
         self.vote_count = vote_count
-
 
 # Action
 class Action:
@@ -105,9 +93,6 @@ class SciFi:
         self.vote_average = vote_average
         self.vote_count = vote_count
 # anime
-
-
-
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -168,6 +153,7 @@ class Popular(db.Model):
 
     def __repr__(self):
         return f'Popular {self.title}'
+
 class Subscriber(db.Model):
     __tablename__='subscribers'
 
@@ -181,7 +167,6 @@ class Subscriber(db.Model):
     def __repr__(self):
         return f'Subscriber {self.email}'
 
-
 class Genres:
     """
     """
@@ -194,17 +179,14 @@ class Movie:
     Movie class to define Movie Objects
     '''
 
-    def __init__(self,id,title,overview,poster,vote_average,vote_count,genres):
+    def __init__(self,id,title,overview,poster,vote_average,vote_count):
         self.id =id
         self.title = title
         self.overview = overview
-        self.poster = "https://image.tmdb.org/t/p/w500/ + poster"
+        self.poster = "https://image.tmdb.org/t/p/w500/" + poster
         self.vote_average = vote_average
         self.vote_count = vote_count
         
-
-
-
 class Review:
 
     all_reviews = []
