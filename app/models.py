@@ -2,8 +2,7 @@ from . import db,login_manager
 from flask_login import current_user,UserMixin
 from werkzeug.security import generate_password_hash,check_password_hash
 from datetime import datetime
-
-
+from flask_login import UserMixin
 
 class Horror:
     '''
@@ -90,6 +89,23 @@ class SciFi:
 # anime
 
 
+# --------------------------------------SUBSCRIBERS-------------------------------------------------------------
+
+class Subscriber(db.Model,UserMixin):
+    __tablename__='subscribers'
+
+    id=db.Column(db.Integer,primary_key=True)
+    email = db.Column(db.String(255),unique=True,index=True)
+    movies = db.relationship("Movies", backref='subscribers',lazy='dynamic')
+    def save_subscriber(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def __repr__(self):
+        return f'Subscriber {self.email}'
+
+
+# ---------------------------------------------------------------------------------------------------
 
 
 @login_manager.user_loader
@@ -104,7 +120,7 @@ class User (UserMixin,db.Model):
     bio = db.Column(db.String(255),default ='My default Bio')
     profile_pic_path = db.Column(db.String(150),default ='default.png')
     hashed_password = db.Column(db.String(255),nullable = False)
-    popular = db.relationship('Popular', backref='user', lazy='dynamic')
+    
     
     @property
     def set_password(self):
@@ -127,65 +143,6 @@ class User (UserMixin,db.Model):
 
     def __repr__(self):
         return "User: %s" %str(self.username)
-
-class Popular(db.Model):
-    __tablename__ = 'populars'
-    id = db.Column(db.Integer,primary_key=True)
-    title = db.Column(db.String(255),nullable=False)
-    overview = db.Column(db.Text(),nullable=False)
-    posted = db.Column(db.DateTime,default=datetime.utcnow)
-    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
-
-    def save(self):
-        db.session.add(self)
-        db.session.commit()
-
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
-
-    def get_popular_movie(id):
-        popular = Popular.query.filter_by(id=id).first()
-
-        return popular
-
-    def __repr__(self):
-        return f'Popular {self.title}'
-class Subscriber(db.Model):
-    __tablename__='subscribers'
-
-    id=db.Column(db.Integer,primary_key=True)
-    email = db.Column(db.String(255),unique=True,index=True)
-
-    def save_subscriber(self):
-        db.session.add(self)
-        db.session.commit()
-
-    def __repr__(self):
-        return f'Subscriber {self.email}'
-
-
-class Genres:
-    """
-    """
-    def __init__(self,id,name):
-        self.id = id
-        self.name = name
-
-class Movie:
-    '''
-    Movie class to define Movie Objects
-    '''
-
-    def __init__(self,id,title,overview,poster,vote_average,vote_count,genres):
-        self.id =id
-        self.title = title
-        self.overview = overview
-        self.poster = "https://image.tmdb.org/t/p/w500/ + poster"
-        self.vote_average = vote_average
-        self.vote_count = vote_count
-        
-
 
 
 class Review:
@@ -217,3 +174,17 @@ class Review:
                 response.append(review)
 
         return response
+
+
+class Movies(db.Model):
+    __tablename__ = 'movies'
+    id = db.Column(db.Integer,primary_key = True)
+    movie_list = db.Column(db.String(255))
+    user = db.Column(db.Integer,db.ForeignKey("subscribers.id"))
+
+    def save_movie_list(self):
+        db.session.add(self)
+        db.session.commit()
+
+    # def __repr__(self):
+    #     return f'Subscriber {self.email}'

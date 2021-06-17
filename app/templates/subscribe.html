@@ -1,0 +1,9 @@
+{%extends "base.html"%}
+
+{% block content %}
+<form method="post">
+    {{ form.hidden_tag() }}
+    {{ form.example }}
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

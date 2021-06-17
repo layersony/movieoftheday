@@ -24,11 +24,16 @@ def create_app(config_name):
   app.register_blueprint(main_blueprint)
 
   from .auth import auth as auth_blueprint
+  
   app.register_blueprint(auth_blueprint, url_prefix= '/authenticate')
+  
   login_manager.init_app(app)
+  
   db.init_app(app)
+  
   bootstap.init_app(app)
 
+  mail.init_app(app)
 
   return app
   
