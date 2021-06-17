@@ -1,3 +1,4 @@
+from sqlalchemy.orm import backref
 from . import db
 from datetime import datetime
 from . import db,login_manager
@@ -110,7 +111,6 @@ class Subscriber(db.Model,UserMixin):
     def __repr__(self):
         return f'Subscriber {self.email}'
 
-
 # ---------------------------------------------------------------------------------------------------
 
 
@@ -126,6 +126,7 @@ class User (UserMixin,db.Model):
     bio = db.Column(db.String(255),default ='My default Bio')
     profile_pic_path = db.Column(db.String(150),default ='default.png')
     hashed_password = db.Column(db.String(255),nullable = False)
+
     
     
     @property
@@ -173,19 +174,6 @@ class Popular(db.Model):
 
     def __repr__(self):
         return f'Popular {self.title}'
-
-class Subscriber(db.Model):
-    __tablename__='subscribers'
-
-    id=db.Column(db.Integer,primary_key=True)
-    email = db.Column(db.String(255),unique=True,index=True)
-
-    def save_subscriber(self):
-        db.session.add(self)
-        db.session.commit()
-
-    def __repr__(self):
-        return f'Subscriber {self.email}'
 
 class Genres:
     """
