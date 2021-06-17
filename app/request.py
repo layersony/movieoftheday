@@ -1,28 +1,23 @@
 import urllib.request, json
-from .models import Movies, Video, Genres
-import urllib.request,json
-from .models import Genres,Movie
+from .models import Genres,Movie, Movies, Video, Genres
 
 api_key = None
 base_url = None
 base_horror_url = None
-main_api_key = None
-main_base_url = None 
+api_key = None
 vid_url = None
 
 
 def configure_request(app):
-    global api_key,base_url, base_horror_url, main_api_key, main_base_url, vid_url
-    api_key = app.config['MOVIE_API_KEY']
-    base_url = app.config['MOVIE_API_BASE_URL']
+    global api_key,base_url, base_horror_url, api_key, vid_url
+    base_url = app.config['MOVIE_API_MOVIE_BASE_URL']
     base_horror_url = app.config['HORROR_GENRE_URL']
-    main_api_key = app.config['MOVIE_API']
-    main_base_url = app.config['BASE_URL']
+    api_key = app.config['MOVIE_API']
     vid_url = app.config['VID_URL']
 
 
 def get_movies(category):
-  main_url = base_url.format(category, main_api_key)
+  main_url = base_url.format(category, api_key)
   with urllib.request.urlopen(main_url) as url:
     data = url.read()
     json_data = json.loads(data)
@@ -102,7 +97,7 @@ def processvid(movielinks):
   return trailer
   
 
-def get_genres(name):
+def get_genres():
     """
     """
     get_genres_url = base_url.format(api_key)

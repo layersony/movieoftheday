@@ -5,7 +5,7 @@ from flask_login import current_user,UserMixin
 from werkzeug.security import generate_password_hash,check_password_hash
 from datetime import datetime
 
-class Movie:
+class Movies:
   def __init__(self,id,title,overview,poster,vote_average,vote_count):
     self.id =id
     self.title = title
