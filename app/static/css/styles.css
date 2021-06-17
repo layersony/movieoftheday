@@ -1,5 +1,5 @@
 body{
-  background: linear-gradient(150deg, rgba(0, 0, 0, 0.8), rgb(29, 33, 94) 100%);
+  background: linear-gradient(150deg, #000000cc, #1d215e 100%);
   color: #fff;
   background-attachment: fixed;
 }
@@ -82,6 +82,18 @@ body{
   min-height: 375px;
 }
 
+.posterPath{
+  text-align: center;
+}
+
+.ratings{
+  font-size: 20px;
+}
+
+.ratings i{
+  color: green;
+}
+
 ul li{
   list-style-type: none;
   font-size: 20px;
@@ -142,6 +154,7 @@ ul li a:hover{
 .imageposter{
   border-radius: 20px;
   box-shadow: 10px 15px 7px white;
+  max-height: 500px;
 }
 .playbutton{
   font-size: 25px
