@@ -9,7 +9,7 @@ class Config:
   MOVIE_API_MOVIE_BASE_URL = 'https://api.themoviedb.org/3/movie/{}?api_key={}'
   HORROR_GENRE_URL = 'https://api.themoviedb.org/3/discover/movie?api_key={}&with_genres=27'
   
-  SECRET_KEY = secret
+  SECRET_KEY = os.environ.get('SECRET_KEY')
   MAIL_SERVER = 'smtp.googlemail.com'
   MAIL_PORT = 587
   MAIL_USE_TLS = True
@@ -21,8 +21,11 @@ class Config:
   MOVIE_API = 'a72cf63dfc93d3aa208d591b54dd2c81'
 
 class ProdConfig(Config):
-  pass
-
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL','')
+    
+    if SQLALCHEMY_DATABASE_URI.startswith('postgres://'):
+        SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI.replace('postgres://', "postgresql://", 1)
+    
 class DevConfig(Config):
   SQLALCHEMY_DATABASE_URI = ''
   DEBUG = True
