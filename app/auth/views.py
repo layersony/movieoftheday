@@ -1,10 +1,10 @@
 from flask import render_template,flash, request, redirect, url_for
 from flask_login import login_user, logout_user,login_required
 from app.auth import auth
-from app.models import User
-from .forms import RegistrationForm,LoginForm
 from ..emails import mail_message
-from ..import db
+from ..models import User
+from .forms import LoginForm,RegistrationForm
+from .. import db
 
 # Login
 @auth.route('/login',methods=['GET','POST'])
@@ -22,6 +22,8 @@ def login():
     return render_template('auth/login.html',login_form = login_form,title=title)
 
 # Registration
+
+
 @auth.route('/register',methods = ["GET","POST"])
 def register():
     form = RegistrationForm()
@@ -30,7 +32,7 @@ def register():
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('auth.login'))
-        title = "New Account"
+    title = "New Account"
     return render_template('auth/register.html',registration_form = form)
 
 
@@ -39,3 +41,4 @@ def register():
 def logout():
     logout_user()
     return redirect(url_for("main.index"))
+    return render_template('auth/register.html',registration_form = form)
