@@ -8,6 +8,12 @@
       <div class="nav navbar-nav navbar-right">
         <ul class="nav d-flex ullisting">
           <li class="lilisting"><a class="nav-item other" href="/">Home</a></li>
+          {% if current_user.is_authenticated %}
+          <li class="lilisting"><a class="nav-item other" href="{{ url_for('main.profile', uname = current_user.username) }}">{{ current_user.username| capitalize }}</a></li>
+          <li class="lilisting"><a class="nav-item other" href="{{url_for('auth.logout')}}">Log Out</a></li>
+          {% else %}
+          <li><a class="nav-item other" href="{{url_for('auth.login')}}">Sign In</a></li>
+          {% endif %}
         </ul>
       </div>
   </div>
@@ -23,15 +29,16 @@
   <a href="/horror">Horror</a>
   <a href="/romance">Romance</a>
   <a href="/sci-fi">Sci-Fi</a>
-</div>
-<hr>
-            <form class="form-inline ml-2" action="{{url_for('main.subscribe')}}" method="POST">
+
+            <form class="form-inline ml-2 " action="{{url_for('main.subscribe')}}" method="POST">
                 <div class="md-form form-group">
-                    <label class="white-color">Email Address...</label>
-                    <input type="email"  class="form-control " name ="subscriber" required>
+                    <!-- <label class="white-color">Email Address...</label> -->
+                    <input type="email"  class="form-control text-white " name ="subscriber" required placeholder="Email Address...">
                 </div>
                 <div class="md-form form-group">
                     <button class="btn btn-sm btn-outline-info" id="subs">Subscribe</button>
                 </div>
             </form>
 
+          </div>
+          <hr>

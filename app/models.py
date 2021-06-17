@@ -118,38 +118,31 @@ class Subscriber(db.Model,UserMixin):
 def load_user(user_id):
     return User.query.get(user_id)
 
-class User (UserMixin,db.Model):
-    __tablename__ = 'users'
-    id = db.Column(db.Integer,primary_key = True)
-    username = db.Column(db.String(255),unique = True,nullable = False)
-    email = db.Column(db.String(255), unique = True,nullable = False)
-    bio = db.Column(db.String(255),default ='My default Bio')
-    profile_pic_path = db.Column(db.String(150),default ='default.png')
-    hashed_password = db.Column(db.String(255),nullable = False)
+class User(UserMixin ,db.Model): # for creating new user
+  __tablename__ = 'users' # allows us to give table in db a proper name
 
-    
-    
-    @property
-    def set_password(self):
-        raise AttributeError('You cannot read the password attribute')
+  id = db.Column(db.Integer, primary_key = True) # rep a single column 1st para type of data to be stored
+  username = db.Column(db.String(255)) # db.String type of data to be stored is string (255) is max number
+  email = db.Column(db.String(255), unique = True, index = True)
+  bio = db.Column(db.String(255))
+  profile_pic_path = db.Column(db.String())
+  password_secure = db.Column(db.String(255))
+#   reviews = db.relationship('Review', backref = 'user', lazy = 'dynamic')
 
-    @set_password.setter
-    def password(self, password):
-        self.hashed_password = generate_password_hash(password)
+  # to accessable to Users
+  @property # used for the write only feature for the class property password for this property is not to be accessed by users
+  def password(self): # this throws an error
+    raise AttributeError('You cannot Read the password attribute')
 
+  @password.setter
+  def password(self, password):# password is hashed
+    self.password_secure = generate_password_hash(password)
 
-    def verify_password(self,password):
-        return check_password_hash(self.hashed_password,password)
+  def verify_password(self, password):# password_secure is checked if hashed
+    return check_password_hash(self.password_secure, password)
 
-    def save(self):
-        db.session.add(self)
-        db.session.commit()
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
-
-    def __repr__(self):
-        return "User: %s" %str(self.username)
+  def __repr__(self):
+    return f'User {self.username}' # not important just for debuging
 
 class Popular(db.Model):
     __tablename__ = 'populars'
@@ -231,7 +224,7 @@ class Movies(db.Model):
     __tablename__ = 'movies'
     id = db.Column(db.Integer,primary_key = True)
     movie_list = db.Column(db.String(255))
-    user = db.Column(db.Integer,db.ForeignKey("subscribers.id"))
+    subscriber = db.Column(db.Integer,db.ForeignKey("subscribers.id"))
 
     def save_movie_list(self):
         db.session.add(self)

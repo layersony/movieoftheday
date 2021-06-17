@@ -45,8 +45,8 @@ body{
   color: white;
   border-radius: 40px;
   min-width: 120px;
-  /* height: 50px; */
   text-align: center;
+  padding: 10px;
 }
 
 .navcustom ul li>.other:hover{
@@ -68,6 +68,16 @@ body{
 }
 .movieday{
   font-size: 20px;
+}
+
+
+.loginForm{
+  width: 450px;
+  margin-top: 30px;
+  background-color: rgba(0, 0, 0, 0.247);
+  padding: 20px;
+  border-radius: 5px;
+  font-size: 17px;
 }
 
 .movie-card{

@@ -18,8 +18,8 @@ def login():
 
         flash('Invalid username or Password')
 
-    title = "Movie of the Day"
-    return render_template('auth/login.html',login_form = login_form,title=title)
+    title = "Xtreme Movies"
+    return render_template('auth/login.html',loginform = login_form,title=title)
 
 # Registration
 
@@ -33,7 +33,7 @@ def register():
         db.session.commit()
         return redirect(url_for('auth.login'))
     title = "New Account"
-    return render_template('auth/register.html',registration_form = form)
+    return render_template('auth/register.html',registrationform = form)
 
 
 @auth.route('/logout')
@@ -41,4 +41,3 @@ def register():
 def logout():
     logout_user()
     return redirect(url_for("main.index"))
-    return render_template('auth/register.html',registration_form = form)
