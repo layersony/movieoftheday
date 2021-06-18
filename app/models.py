@@ -96,7 +96,7 @@ class Subscriber(db.Model,UserMixin):
 
     id=db.Column(db.Integer,primary_key=True)
     email = db.Column(db.String(255),unique=True,index=True)
-    movies = db.relationship("Movies", backref='subscribers',lazy='dynamic')
+    movies = db.relationship("Movies", backref='users',lazy='dynamic')
     def save_subscriber(self):
         db.session.add(self)
         db.session.commit()
@@ -106,8 +106,6 @@ class Subscriber(db.Model,UserMixin):
 
 
 # ---------------------------------------------------------------------------------------------------
-
-
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)

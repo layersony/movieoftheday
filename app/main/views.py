@@ -106,11 +106,14 @@ def subscribe():
 
 @main.route('/subscribe/movies',methods = ['POST','GET'])
 def choose_movie():
+    subscribers = Subscriber
     form = SimpleForm()
     if form.validate_on_submit():
         data = form.example.data
         new_movie = Movies(movie_list= data)
         new_movie.save_movie_list()
         return redirect(url_for('main.index'))
+        # flash()
+        # return redirect(url_for('main.index'))
 
     return render_template('subscribe.html',form = form)

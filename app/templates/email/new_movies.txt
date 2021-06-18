@@ -1,0 +1,7 @@
+Hello subscriber!
+
+Here are our recommendations to you based on the genres you have selected.
+
+{{for }}
+Title:{{ source.title|truncate(10)}}
+Movie Image: {{ source.poster }}
